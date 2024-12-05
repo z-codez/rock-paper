@@ -51,8 +51,8 @@ section.scores {
     gap: 55%;
 }
 
-section.game-buttons {
-    button {
+
+.button {
         cursor: pointer;
         margin: 10px;
         width: 100px;
@@ -60,9 +60,8 @@ section.game-buttons {
         background-color: #FEAC32;
         background-image: linear-gradient(#FECC4C, #FFAC33);
 
-    }
+}
 
-    button:hover {
+.button:hover {
         background-image: linear-gradient(#ffcc4c, #f89808);
-    }
 }
