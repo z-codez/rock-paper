@@ -40,10 +40,9 @@ function  playGame(e) {
     const computerChoice = Math.floor(Math.random() * 3);
     // I got the value of the button pressed using Event and EventTarget
     const playerChoice = Number(e.target.value);
-    console.log(playerChoice);
+    console.log(`Player choice: ${playerChoice} and Computer: ${computerChoice}`);
 
-    // TODO: Finish adding functionality to buttons and Game logic
-    if (computerChoice > playerChoice && (playerChoice !== 0 && computerChoice !== 2)) {
+    if ((computerChoice > playerChoice) && (playerChoice + computerChoice !== 2)) {
         computerScore++;
         HTMLString = `
         <p>Computer wins! ${choices[computerChoice]} beats ${choices[playerChoice]}</p>
@@ -65,10 +64,17 @@ function  playGame(e) {
         <p>${whoWon()} has won the game!</p>
         <button type="button" class="play button">Play again?</button>
         `;
+        display.innerHTML = HTMLString;
+        playerScoreDisplay.innerText = playerScore;
+        computerScoreDisplay.innerText = computerScore;
+        const resetButton = document.querySelector(".play");
+        resetButton.addEventListener("click", reset);
+        return;
     }
     playerScoreDisplay.innerText = playerScore;
     computerScoreDisplay.innerText = computerScore;
     display.innerHTML = HTMLString;
+
 }
 
 const buttons = gameButtons.querySelectorAll("button");
@@ -77,11 +83,6 @@ buttons.forEach((button) => {
     button.addEventListener("click", playGame);
 });
 
-const resetButton = document.querySelector(".play");
-
-if (resetButton) {
-    resetButton.addEventListener("click", reset);
-}
 
 function reset() {
     playerScore = 0;
